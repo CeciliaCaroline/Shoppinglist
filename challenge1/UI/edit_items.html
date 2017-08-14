@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <title>Edit Item</title>
+</head>
+<body >
+
+<!-- header navigation bar -->
+<nav class="navbar navbar-inverse fixed-top bg-faded navbar-toggleable-sm " style="background: rebeccapurple">
+    <div class="container">
+        <h1 class="navbar-brand m-o align-content-end mr-auto">SHOPPING LIST</h1>
+        <div class="navbar-nav ">
+            <a class="nav-item nav-link active" href="#">Cecilia Caroline</a>
+            <a class="nav-item nav-link" href="#">Log Out</a>
+        </div><!-- navbar-->
+    </div><!-- container -->
+
+
+</nav>
+
+<!-- Editing an item -->
+<div class="container">
+<div class="row" id="new_list">
+     <div class="container new_list_background card col-6" style="background: rgba(168,143,255,.2)">
+        <h2 class="text-capitalize card-title mt-1">Edit List Item</h2>
+        <div class="row">
+            <div class="col">
+                <!-- List item content-->
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="item">Item:</label>
+                    <div class="col">
+                        <input type="text" class="form-control" id="item" placeholder="Enter item">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="desp">Description:</label>
+                    <div class="col">
+                        <textarea class="form-control" rows="5" id="desp"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <button class="btn btn-info " type="submit">Save Item</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+<!-- contents of footer navigation bar -->
+<footer class="navbar fixed-bottom navbar-inverse navbar-toggleable-sm " style="background: rebeccapurple">
+    <div class="container">
+         <span class="navbar-text ml-auto">&copy; Shopping List Inc All rights reserved</span>
+    </div>
+
+</footer>
+</div>
+
+<script src="../static/js/jquery.slim.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+</body>
+</html>
