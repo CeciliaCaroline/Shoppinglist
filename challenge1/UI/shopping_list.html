@@ -16,11 +16,42 @@
             <a class="nav-item nav-link" href="#">Log Out</a>
         </div><!-- navbar-->
     </div><!-- container -->
-
-
 </nav>
 
-<script src="../static/js/jquery.slim.min.js"></script>
-<script src="../static/js/bootstrap.min.js"></script>
+<!-- View lists that have been created-->
+<div class="container" style="margin-top: 100px">
+    <div class="form-group float-right">
+        <button class=" btn btn-info" type="submit">Create New List</button>
+    </div>
+
+    <table class="table table-hover table-striped">
+        <!-- Table of lists that have been created-->
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th colspan="2">Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+            <td><a href="#">Clothes</a></td>
+            <td><a href="#">Edit</a></td>
+            <td><a href="#">Delete</a></td>
+        </tr>
+
+        <tr>
+            <td><a href="#">Food</a></td>
+            <td><a href="#">Edit</a></td>
+            <td><a href="#">Delete</a></td>
+        </tr>
+
+
+        </tbody>
+    </table>
+
+    <script src="../static/js/jquery.slim.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
 </body>
 </html>
