@@ -6,10 +6,10 @@
     <link rel="stylesheet" href="../static/css/styles.css">
     <title>Edit Item</title>
 </head>
-<body >
+<body>
 
 <!-- header navigation bar -->
-<nav class="navbar navbar-inverse fixed-top bg-faded navbar-toggleable-sm " >
+<nav class="navbar navbar-inverse fixed-top bg-faded navbar-toggleable-sm ">
     <div class="container">
         <h1 class="navbar-brand m-o align-content-end mr-auto">SHOPPING LIST</h1>
         <div class="navbar-nav ">
@@ -21,43 +21,48 @@
 
 <!-- Editing an item -->
 <div class="container">
-<div class="row" >
-     <div class="container new_list_background card col-6" >
-        <h2 class="text-capitalize card-title mt-1">Edit List Item</h2>
-        <div class="row">
-            <div class="col">
-                <!-- List item content-->
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="item">Item:</label>
-                    <div class="col">
-                        <input type="text" class="form-control" id="item" >
+    <div class="row">
+        <div class="container new_list_background card col-6">
+            <h2 class="text-capitalize card-title mt-1">Edit List Item</h2>
+            <div class="row">
+                <div class="col">
+                    <!-- List item content-->
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="item">Item</label>
+                        <div class="col">
+                            <input type="text" class="form-control" id="item">
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="description">Description:</label>
-                    <div class="col">
-                        <textarea class="form-control" rows="5" id="description"></textarea>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="quantity">Quantity</label>
+                        <div class="col">
+                            <input type="text" class="form-control" id="quantity">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div>
-                        <button class="btn btn-info " type="submit">Save Item</button>
-                    </div>
-                </div>
 
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="price">Price</label>
+                        <div class="col">
+                            <input type="text" class="form-control" id="price">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            <button class="btn btn-info " type="submit">Save Item</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+        <!-- contents of footer navigation bar -->
+        <footer class="navbar fixed-bottom navbar-inverse navbar-toggleable-sm ">
+            <div class="container">
+                <span class="navbar-text ml-auto">&copy; Shopping List Inc All rights reserved</span>
+            </div>
 
+        </footer>
     </div>
-<!-- contents of footer navigation bar -->
-<footer class="navbar fixed-bottom navbar-inverse navbar-toggleable-sm " >
-    <div class="container">
-         <span class="navbar-text ml-auto">&copy; Shopping List Inc All rights reserved</span>
-    </div>
-
-</footer>
-</div>
 </div>
 
 <script src="../static/js/jquery.slim.min.js"></script>
