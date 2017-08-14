@@ -25,7 +25,7 @@
     <div class="float-right mb-5">
         <div class="row">
             <div class="col">
-                <button class=" btn btn-info" type="submit" data-toggle="modal" data-target="#myModal1">Add Items
+                <button class=" btn btn-info" type="submit" data-toggle="modal" data-target="#myModal">Add Items
                 </button>
             </div><!-- col-->
         </div><!-- btn group-->
@@ -33,7 +33,7 @@
 
 
     <!-- Modal -->
-    <div id="myModal1" class="modal fade" role="dialog">
+    <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
             <!-- Modal content-->
@@ -51,16 +51,22 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label class="control-label col-sm-2" for="item">Item:</label>
+                                    <label class="control-label col-sm-2" for="item">Item</label>
                                     <div class="col">
                                         <input type="text" class="form-control" id="item">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="control-label col-sm-2" for="description">Description:</label>
+                                    <label class="control-label col-sm-2" for="quantity">Quantity</label>
                                     <div class="col">
-                                        <textarea type="text" class="form-control" id="description"></textarea>
+                                        <input type="text" class="form-control" id="quantity">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="price">Price</label>
+                                    <div class="col">
+                                        <input type="text" class="form-control" id="price">
                                     </div>
                                 </div>
                             </div>
@@ -75,7 +81,7 @@
         </div>
     </div>
 
-    <div class="container">
+
         <table class="table table-hover">
             <!-- Table displaying list items-->
             <thead>
