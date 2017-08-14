@@ -1,5 +1,6 @@
 import re
 
+
 class User:
     def __init__(self, username, email, password):
         """"
@@ -13,7 +14,7 @@ class User:
         self.password = password
         self.lists = {}
         self.new_lists = {}
-        self.list_items = {}
+        # self.list_items = {}
 
     def create_list(self, list):
         """"
