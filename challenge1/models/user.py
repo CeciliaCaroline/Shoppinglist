@@ -44,7 +44,7 @@ class User:
 
     def get_lists(self):
         """
-        method to get all lists
+        method to get all lists that have been created
         """
         return self.lists
 
