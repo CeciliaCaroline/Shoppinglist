@@ -21,9 +21,53 @@
 <!-- View lists that have been created-->
 <div class="container" style="margin-top: 100px">
     <div class="form-group float-right">
-        <button class=" btn btn-info" type="submit">Create New List</button>
-    </div>
+        <!-- Trigger the modal with add item button -->
+        <button class=" btn btn-info" type="submit" data-toggle="modal" data-target="#myModal">Create New List</button>
+    </div><!-- container-->
 
+
+    <!-- Modal -->
+
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">New List</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="item">Title:</label>
+                                    <div class="col">
+                                        <input type="text" class="form-control" id="item" >
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="description">Description:</label>
+                                    <div class="col">
+                                        <textarea type="text" class="form-control" id="description"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
     <table class="table table-hover table-striped">
         <!-- Table of lists that have been created-->
         <thead>
