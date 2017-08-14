@@ -41,3 +41,17 @@ class User:
             edited_list.description = description
             return True
         return False
+
+    def get_lists(self):
+        """
+        method to get all lists
+        """
+        return self.lists
+
+    def get_list(self, list_id):
+        """
+        method to get single list corresponding to list id
+        """
+        if list_id in self.lists.keys():
+            return self.lists[list_id]
+        return None
