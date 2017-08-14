@@ -1,3 +1,5 @@
+import re
+
 class User:
     def __init__(self, username, email, password):
         """"
@@ -55,3 +57,21 @@ class User:
         if list_id in self.lists.keys():
             return self.lists[list_id]
         return None
+
+    def del_list(self, list_id):
+        """"
+        method to delete an existing list
+        :param list_id
+        """
+        if list_id in self.lists.keys():
+            del self.lists[list_id]
+            del self.new_lists[list_id]
+            return True
+        return None
+
+    def check_valid_list(self, title):
+        """
+        method to check that list title does not contain any special characters
+        """
+        if re.match("^[a-zA-Z0-9\s]*$", title):
+            return True
