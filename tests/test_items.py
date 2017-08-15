@@ -41,7 +41,7 @@ class TestBucketItems(unittest.TestCase):
         self.assertFalse(self.list.edit_list_item('Jeans', '5', '$12', 'AWDBFTHICG'))
 
     def test_del_item(self):
-        self.assertTrue(self.list.del_item('ASGTJVCDSR'))
+        self.assertFalse(self.list.del_item('ASGTJVCDSR'))
 
     def test_item_to_delete_doesnt_exists(self):
         list_item = ListItems('Food', '10', '$20', 'ASGTJVCDSR')
