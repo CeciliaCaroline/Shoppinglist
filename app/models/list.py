@@ -8,8 +8,6 @@ class List:
         self.list_id = list_id
         self.list_items = {}
         self.new_list_items = {}
-        self.done = []
-        self.undone = []
 
     def create_list_items(self, new_item):
         """"
