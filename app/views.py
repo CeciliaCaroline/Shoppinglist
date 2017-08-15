@@ -61,3 +61,48 @@ def home():
         return redirect(url_for('login'))
     lists = user.total_lists()
     return render_template('home.html', user=user, lists=lists)
+
+
+@app.route('/view/list')
+def shopping_list():
+    """"
+    route to view shopping lists that have been created by the user.
+    If none have been created, some text is displayed
+    """
+    error = None
+    user = app_class.get_user(session['email'])
+    if not user:
+        flash('You need to login first')
+        return redirect(url_for('login'))
+
+    lists = user.get_lists()
+    return render_template('shopping_list.html', lists=lists, error=error, user=user)
+
+
+@app.route('/add/list', methods=['POST'])
+def add_list():
+    pass
+
+
+@app.route('/edit/list/<listt_id>', methods=['POST', 'GET'])
+def edit_list(list_id):
+    pass
+
+
+@app.route('/delete/list/<list_id>', methods=['GET', 'POST'])
+def delete_list():
+    pass
+
+
+@app.route('/view/list/item/<listt_id>', methods=['POST', 'GET'])
+def items():
+    pass
+
+@app.route('/logout')
+def logout():
+    """"
+    route to log out user
+    """
+    session.pop('email', None)
+    flash('You have been logged out')
+    return redirect(url_for('login'))
