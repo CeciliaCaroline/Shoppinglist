@@ -2,16 +2,20 @@
 {% block title %}My Lists{% endblock %}
 {% block content %}
 <body>
-<!-- header navigation bar -->
-<nav class="navbar navbar-inverse fixed-top bg-faded navbar-toggleable-sm ">
-    <div class="container">
-        <h1 class="navbar-brand m-o align-content-end mr-auto">SHOPPING LIST</h1>
-        <div class="navbar-nav ">
-            <a class="nav-item nav-link active" href="shopping_list.html">Cecilia Caroline</a>
-            <a class="nav-item nav-link" href="login.html">Log Out</a>
-        </div><!-- navbar-->
-    </div><!-- container -->
-</nav>
+    <!-- header navigation bar -->
+    <nav class="navbar navbar-inverse fixed-top bg-faded navbar-toggleable-sm ">
+        <div class="container">
+           <a href="{{ url_for('home') }}" class="navbar-brand m-o align-content-end mr-auto">
+                BUCKET LIST
+            </a>
+            <div class="navbar-nav ">
+                <a class="nav-item nav-link active" href="{{ url_for('home') }}">{{ user.username }}</a>
+                <a class="nav-item nav-link " href="{{ url_for('shopping_list') }}">My Lists</a>
+                <a class="nav-item nav-link" href="{{ url_for('logout') }}">Log Out</a>
+            </div><!-- navbar-->
+        </div><!-- container -->
+    </nav>
+    <!--end fo navigation bar-->
 
 <!-- View lists that have been created-->
 <div class="container items" >

@@ -53,5 +53,6 @@ class TestUser(unittest.TestCase):
         self.assertFalse(self.user.del_list('AWDBFTHICG'))
 
 
+
 if __name__ == '__main__':
     unittest.main()
