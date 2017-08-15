@@ -26,7 +26,7 @@ class List:
             self.new_list_items[new_item.item_id] = new_item.item
             return True
 
-    def edit_bucket_item(self, item, description, item_id, status):
+    def edit_list_item(self, item, description, item_id, status):
         """"
         method to edit an existing item
         :param item_id
