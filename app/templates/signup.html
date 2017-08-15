@@ -16,7 +16,8 @@
             <h2 class="mt-5 text-capitalize"> Shopping list</h2>
             <h6 class="text-capitalize">The Best Way To Record and Share your shopping lists</h6>
 
-            <p class="lead">This is an application that enables users to record, track and share things they want to spend
+            <p class="lead">This is an application that enables users to record, track and share things they want to
+                spend
                 money on in order to meet their desires.</p>
             <h4>Create</h4>
             <p>Create a shopping list with all the items that you want to purchase</p>
@@ -28,44 +29,56 @@
 
         <!-- media body-->
         <div class=" container media-body form-background card mx-5 mt-5 col">
-            <h2 class="text-capitalize card-title mt-5">New to Shoppinglist. Register</h2>
-            <div class="row">
-                <div class="col">
+            <form action="{{ url_for('signup') }}" method="post">
+                <h2 class="text-capitalize card-title mt-5">New to Shoppinglist. Register</h2>
+                <div class="row">
+                    <div class="col">
 
-                    <!-- User name input-->
-                    <div class="form-group">
-                        <label class="control-label" for="username">Username</label>
-                        <div class="col">
-                            <input type="text" class="form-control" id="username" required>
-                        </div><!--column-->
-                    </div><!--form group-->
+                        <!-- User name input-->
+                        <div class="form-group">
+                            <label class="control-label" for="username">Username</label>
+                            <div class="col">
+                                <input type="text" class="form-control" id="username" name="username" required>
+                            </div><!--column-->
+                        </div><!--form group-->
 
-                    <!-- Email input-->
-                    <div class="form-group">
-                        <label class="control-label align-content-around" for="email">Email</label>
-                        <div class="col">
-                            <input type="email" class="form-control" id="email" required>
-                        </div><!--column-->
-                    </div><!--form group-->
+                        <!-- Email input-->
+                        <div class="form-group">
+                            <label class="control-label align-content-around" for="email">Email</label>
+                            <div class="col">
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div><!--column-->
+                        </div><!--form group-->
 
-                    <!-- Password input-->
-                    <div class="form-group">
-                        <label class="control-label align-content-around" for="password">Password</label>
-                        <div class="col">
-                            <input type="password" class="form-control" id="password" required>
-                        </div><!--column-->
-                    </div><!--form group-->
+                        <!-- Password input-->
+                        <div class="form-group">
+                            <label class="control-label align-content-around" for="password">Password</label>
+                            <div class="col">
+                                <input type="password" class="form-control" id="password" name="password" required>
+                            </div><!--column-->
+                        </div><!--form group-->
 
-                    <!-- Sign Up button-->
-                    <div class="form-group text-center">
-                        <button class="btn btn-info btn-block" type="submit">Sign me Up!</button>
+                        <!-- Sign Up button-->
+                        <div class="form-group text-center">
+                            <button class="btn btn-info btn-block" typeof="submit">Sign me Up!</button>
 
-                        <p class="align-content-center">Already have an account? <a class="card-link"
-                                                                                    href="login.html"> Log In </a>
-                        </p>
-                    </div><!--form group-->
-                </div><!--column-->
-            </div><!--row-->
+                            <p class="align-content-center">Already have an account? <a class="card-link"
+                                                                                        href="{{url_for('login')}}">
+                                Log In </a>
+                            </p>
+                        </div><!--form group-->
+
+                    </div><!--column-->
+                </div><!--row-->
+            </form>
+            <!--error -->
+            <div class="d-flex justify-content-center">
+                {% if error %}
+                <p class="error">{{ error }}</p>
+                {% endif %}
+            </div>
+            <!--end of error-->
+
         </div><!--container-->
     </div><!--row-->
 
