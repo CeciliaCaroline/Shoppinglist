@@ -46,3 +46,18 @@ def login():
             return render_template('login.html', error=error)
 
     return render_template('login.html')
+
+
+@app.route('/home')
+def home():
+    """"
+    Route with the user profile
+    user is able to see the number of lists that they have
+    """
+    user = app_class.get_user(session['email'])
+
+    if not user:
+        flash('You need to login first')
+        return redirect(url_for('login'))
+    lists = user.total_lists()
+    return render_template('home.html', user=user, lists=lists)
