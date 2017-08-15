@@ -47,6 +47,12 @@ class TestApplication(unittest.TestCase):
         new_user = self.app.login('cecilia@gmail.com', 'pass ')
         self.assertEqual(new_user, self.user1, msg='The password is invalid')
 
+    def test_if_user_registering_already_exists(self):
+        self.user = self.app.register(self.user)
+        self.user1 = User('CeciliaCaroline', 'cecilia@gmail.com', '123456')
+        new_user = self.app.register(self.user1)
+        self.assertNotEqual(new_user, self.user, msg='This user already exists')
+
 
 if __name__ == '__main__':
     unittest.main()
