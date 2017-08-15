@@ -16,20 +16,26 @@ class User:
         self.new_lists = {}
         # self.list_items = {}
 
-    def create_list(self, list):
+    def create_list(self, list1):
         """"
         method to check if the list id exists, if not,  create a new list
-        :param list
+        :param list1
         """
-        if list.list_id in self.lists.keys():
+        if list1.list_id in self.lists.keys():
             return False
-        elif list.title in self.new_lists:
+        elif list1.title in self.new_lists:
             return False
 
         else:
-            self.lists[list.list_id] = list
-            self.new_lists[list.list_id] = list.title
+            self.lists[list1.list_id] = list1
+            self.new_lists[list1.list_id] = list1.title
             return True
+
+    def total_lists(self):
+        """"
+        method to return the total number of lists created
+        """
+        return len(self.lists)
 
     def edit_list(self, list_id, title, description):
         """"
