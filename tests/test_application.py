@@ -53,6 +53,9 @@ class TestApplication(unittest.TestCase):
         new_user = self.app.register(self.user1)
         self.assertNotEqual(new_user, self.user, msg='This user already exists')
 
+    def test_if_user_logging_is_not_registered(self):
+        self.assertFalse(self.app.login('cecilia@gmail.com', '123456'))
+
 
 if __name__ == '__main__':
     unittest.main()
