@@ -8,6 +8,8 @@ class List:
         self.list_id = list_id
         self.list_items = {}
         self.new_list_items = {}
+        self.done = []
+        self.undone = []
 
     def create_list_items(self, new_item):
         """"
@@ -24,18 +26,20 @@ class List:
             self.new_list_items[new_item.item_id] = new_item.item
             return True
 
-    def edit_list_item(self, item, description, item_id, status):
+    def edit_list_item(self, title, quantity, item_id, price, status):
         """"
         method to edit an existing item
         :param item_id
-        :param item
-        :param description
+        :param title
+        :param quantity
+        :param price
         :param status
         """
         if item_id in self.list_items.keys():
             edit_list_item = self.list_items[item_id]
-            edit_list_item.item = item
-            edit_list_item.description = description
+            edit_list_item.title = title
+            edit_list_item.quantity = quantity
+            edit_list_item.price = price
             edit_list_item.status = status
             return True
         return False
@@ -61,3 +65,13 @@ class List:
     def check_valid_items(self, item):
         if re.match("^[a-zA-Z0-9\s]*$", item):
             return True
+
+    def get_done_status(self, new_item):
+        new_item.status == 'Done'
+        self.done.append(new_item)
+
+        # return True
+
+    def get_undone_status(self, new_item):
+        new_item.status == 'Not Done'
+        self.undone.append(new_item)
