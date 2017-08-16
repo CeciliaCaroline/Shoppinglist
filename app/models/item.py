@@ -6,7 +6,7 @@ class ListItems:
         """"
         method to initialize list item attributes
         """
-        self.item = title
+        self.title = title
         self.quantity = quantity
         self.item_id = item_id
         self.price = price

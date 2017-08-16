@@ -46,34 +46,36 @@
 
                     <!-- modal body-->
                     <div class="modal-body">
-                        <form class="form-horizontal" action="{{ url_for('add_item', list_id = list1.list_id) }}"
+                        <form class="form-horizontal" action="{{ url_for('add_item', list_id=list1.list_id) }}"
                               method="post">
                             <div class="row">
                                 <div class="col">
+
                                     <div class="form-group">
                                         <label class="control-label col-sm-2" for="item">Item</label>
                                         <div class="col">
-                                            <input type="text" class="form-control" id="item" name="title">
+                                            <input type="text" class="form-control" id="item" name="title" required>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label col-sm-2" for="quantity">Quantity</label>
                                         <div class="col">
-                                            <input type="text" class="form-control" id="quantity" name="quantity">
+                                            <input type="text" class="form-control" id="quantity" name="quantity" required>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label col-sm-2" for="price">Price</label>
                                         <div class="col">
-                                            <input type="text" class="form-control" id="price" name="price">
+                                            <input type="text" class="form-control" id="price" name="price" required>
                                         </div>
                                     </div>
+
                                     <div class="form-group">
                                         <label class="control-label col-sm-6" for="sel1">Select status:</label>
                                         <div class="col">
-                                            <select class="form-control" id="sel1" name="status">
+                                            <select class="form-control" id="sel1" name="status" required>
                                                 <option>Not Done</option>
                                                 <option>Done</option>
                                             </select>
@@ -83,7 +85,7 @@
                             </div>
 
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-success" data-dismiss="modal">Save Item</button>
+                                <input type="submit" class="btn btn-success" value="Save">
                             </div>
                         </form>
                     </div>
@@ -91,50 +93,51 @@
             </div>
         </div>
 
-        <!-- Table displaying list items-->
-        {% if list1.list_items %}
-            <table class="table table-hover">
 
-                <thead>
+    <!-- Table displaying list items-->
+    {% if list1.list_items %}
+        <table class="table table-hover">
+
+            <thead>
+            <tr>
+                <th>Item</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th colspan="2" class="text-center">Action</th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+
+            <tbody>
+            {% for key, item in list1.list_items.items() %}
                 <tr>
-                    <th>Item</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                    <th colspan="2">Action</th>
-                    <th></th>
-                    <th></th>
+                    <td>{{ item.title }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.price }}</td>
+                    <td>{{ item.status }}</td>
+                    <td class="text-right"><a
+                            href="{{ url_for('edit_item', list_id = list1.list_id, item_id = item.item_id) }}"
+                            class=" btn btn-link">EDIT</a></td>
+                    <td class="text-right"><a
+                            href="{{ url_for('delete_item',list_id = list1.list_id, item_id = item.item_id) }}"
+                            class="btn btn-link">DELETE</a>
+                    </td>
                 </tr>
-                </thead>
+            {% endfor %}
+            </tbody>
+        </table>
 
-                <tbody>
-                {% for key, item in list1.list_items.items() %}
-                    <tr>
-                        <td>{{ item.title }}</td>
-                        <td>{{ item.quantity }}</td>
-                        <td>{{ item.price }}</td>
-                        <td>{{ item.status }}</td>
-                        <td class="text-right"><a
-                                href="{{ url_for('edit_item', list_id = list1.list_id, item_id = item.item_id) }}"
-                                class=" btn btn-link">EDIT</a></td>
-                        <td class="text-right"><a
-                                href="{{ url_for('delete_item',list_id = list1.list_id, item_id = item.item_id) }}"
-                                class="btn btn-link">DELETE</a>
-                        </td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+    {% else %}
 
-        {% else %}
+        <!-- Page contents -->
 
-            <!-- Page contents -->
+        <h1 class="text-center d-flex align-item-center justify-content-center">There are no items
+            in {{ list1.title }} </h1>
 
-            <h1 class="text-center d-flex align-item-center justify-content-center">There are no items
-                in {{ list1.title }} </h1>
-
-            </div><!-- container-->
-
-        {% endif %}
+    {% endif %}
+    </div><!-- container-->
     <!-- contents of footer navigation bar -->
     <footer class="navbar fixed-bottom navbar-inverse navbar-toggleable-sm ">
         <div class="container">
@@ -142,7 +145,7 @@
         </div>
 
     </footer>
-    </div>
+
 
     <script src="../static/js/jquery.slim.min.js"></script>
     <script src="../static/js/bootstrap.min.js"></script>

@@ -18,12 +18,12 @@ class List:
         """
         if new_item.item_id in self.list_items.keys():
             return False
-        elif new_item.item in self.new_list_items:
+        elif new_item.title in self.new_list_items:
             return False
 
         else:
             self.list_items[new_item.item_id] = new_item
-            self.new_list_items[new_item.item_id] = new_item.item
+            self.new_list_items[new_item.item_id] = new_item.title
             return True
 
     def edit_list_item(self, title, quantity, item_id, price, status):
@@ -62,8 +62,8 @@ class List:
             return True
         return False
 
-    def check_valid_items(self, item):
-        if re.match("^[a-zA-Z0-9\s]*$", item):
+    def check_valid_items(self, title):
+        if re.match("^[a-zA-Z0-9\s]*$", title):
             return True
 
     def get_done_status(self, new_item):

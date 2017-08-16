@@ -220,14 +220,14 @@ def add_item(list_id):
         if list1.check_valid_items(title):
             if list1.create_list_items(new_item):
                 flash('Item successfully created')
-                return redirect(url_for('shopping_list_item', list_id=list1.list_id))
+                return redirect(url_for('items', list_id=list1.list_id))
             flash("Item already exists. Try again")
         flash('Invalid item. Only numbers and letters accepted')
         return render_template('items.html', user=user, list1=list1)
 
     else:
         flash('You did not input a title or description. Try Again')
-        return render_template('items.html', user=user, bucket=list1)
+        return render_template('items.html', user=user, list1=list1)
 
 
 @app.route('/edit/list/item/<list_id>/<item_id>', methods=['GET', 'POST'])
