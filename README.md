@@ -1,4 +1,4 @@
-# Shopping List App (Front end)
+# Shopping List Application
 [![Coverage Status](https://coveralls.io/repos/github/CeciliaCaroline/Shoppinglist/badge.svg?branch=master)](https://coveralls.io/github/CeciliaCaroline/Shoppinglist?branch=master)
 
 The bucketlist app is an application that allows users to record, track and share things they want to buy/purchase in order to meet their desires.
