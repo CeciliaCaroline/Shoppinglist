@@ -56,7 +56,7 @@ class List:
             del self.list_items[item_id]
             del self.new_list_items[item_id]
             return True
-        return None
+        return False
 
     def check_valid_items(self, item):
         if re.match("^[a-zA-Z0-9\s]*$", item):
