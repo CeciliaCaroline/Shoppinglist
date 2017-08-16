@@ -310,3 +310,11 @@ def logout():
     session.pop('email', None)
     flash('You have been logged out')
     return redirect(url_for('login'))
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    """"
+    The page to return in case a route is not defined.
+    """
+    return render_template('404.html'), 404
