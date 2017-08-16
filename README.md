@@ -1,0 +1,2 @@
+# Shoppinglist
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/06515178c94249f092860523e08360c1)](https://www.codacy.com/app/CeciliaCaroline/Shoppinglist?utm_source=github.com&utm_medium=referral&utm_content=CeciliaCaroline/Shoppinglist&utm_campaign=badger)
