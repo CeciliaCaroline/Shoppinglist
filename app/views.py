@@ -290,7 +290,8 @@ def delete_item(list_id, item_id):
     list1 = user.get_list(list_id)
     item = list1.get_item(item_id)
     if not list1 and not item:
-        return redirect(url_for('shopping_list'))
+        flash('Item does not exist')
+        return redirect(url_for('items', list_id=list_id))
 
     if request.method == 'POST':
         if list1.del_item(item_id):
@@ -298,7 +299,7 @@ def delete_item(list_id, item_id):
             return redirect(url_for('items', list_id=list1.list_id))
 
         error = 'Item was not deleted'
-    return render_template('delete_item.html', error=error, user=user, list1=list1, item=item)
+    return render_template('delete_items.html', error=error, user=user, list1=list1, item=item)
 
 
 @app.route('/logout')
