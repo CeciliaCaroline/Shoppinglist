@@ -1,6 +1,6 @@
-language: pyhton
+language: python
 
-pyhton:
+python:
 
  - 3.6.1
 
