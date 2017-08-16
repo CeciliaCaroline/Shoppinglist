@@ -26,7 +26,7 @@ class List:
             self.new_list_items[new_item.item_id] = new_item.title
             return True
 
-    def edit_list_item(self, title, quantity, item_id, price, status):
+    def edit_list_item(self, title, quantity, price, status, item_id):
         """"
         method to edit an existing item
         :param item_id

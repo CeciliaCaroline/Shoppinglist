@@ -203,6 +203,9 @@ def add_item(list_id):
         :param list_id
     """
     user = app_class.get_user(session['email'])
+    if not user:
+        return redirect(url_for('login'))
+
     list1 = user.get_list(list_id)
     title = request.form['title']
     quantity = request.form['quantity']
@@ -217,14 +220,12 @@ def add_item(list_id):
             flash('You have completed one item')
         else:
             list1.get_undone_status(new_item)
-        # if list1.check_valid_items(title):
+
         if list1.create_list_items(new_item):
             flash('Item successfully created')
             return redirect(url_for('items', list_id=list1.list_id))
         flash("Item already exists. Try again")
         return render_template('items.html', user=user, list1=list1)
-        # flash('Invalid item. Only numbers and letters accepted')
-        # return render_template('items.html', user=user, list1=list1)
 
     else:
         flash('You did not input a title or description. Try Again')

@@ -2,7 +2,7 @@ class ListItems:
     """"
     List items class
     """
-    def __init__(self, title, quantity, item_id, price, status):
+    def __init__(self, title, quantity, price, status, item_id):
         """"
         method to initialize list item attributes
         """
