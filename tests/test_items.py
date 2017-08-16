@@ -10,13 +10,13 @@ class TestBucketItems(unittest.TestCase):
 
     def setUp(self):
         self.list = List('TRAVEL', 'I want to travel the world', 'ASGTJVCDSR')
-        self.new_item = ListItems('Food', '5', '$12', 'AWDBFTHICG')
+        self.new_item = ListItems('Food', '5', '$12', 'Not Done', 'AWDBFTHICG')
 
     def test_create_list_items(self):
         self.assertTrue(self.list.create_list_items(self.new_item))
 
     def test_list_item_to_create_already_exists(self):
-        list_item = ListItems('Paris', '1', 'AWDBFTHICG', '$12')
+        list_item = ListItems('Paris', '1', '$12', 'Not Done', 'AWDBFTHICG')
         self.list.list_items = {"AWDBFTHICG": list_item}
         self.assertFalse(self.list.create_list_items(list_item))
 
@@ -33,18 +33,18 @@ class TestBucketItems(unittest.TestCase):
 
     def test_edit_list_item(self):
         self.list.create_list_items(self.new_item)
-        self.assertTrue(self.list.edit_list_item('Food', '5', '$12', 'AWDBFTHICG'))
+        self.assertTrue(self.list.edit_list_item('Food', '5', '$12', 'Not Done', 'AWDBFTHICG'))
 
     def test_list_item_to_edit_doesnt_exists(self):
-        list_item = ListItems('Food', '10', '$20', 'ASGTJVCDSR')
+        list_item = ListItems('Food', '10', '$20', 'Not Done', 'ASGTJVCDSR')
         self.list.create_list_items(list_item)
-        self.assertFalse(self.list.edit_list_item('Jeans', '5', '$12', 'AWDBFTHICG'))
+        self.assertFalse(self.list.edit_list_item('Jeans', '5', '$12', 'Not Done', 'AWDBFTHICG'))
 
     def test_del_item(self):
         self.assertFalse(self.list.del_item('ASGTJVCDSR'))
 
     def test_item_to_delete_doesnt_exists(self):
-        list_item = ListItems('Food', '10', '$20', 'ASGTJVCDSR')
+        list_item = ListItems('Food', '10', '$20','Not Done', 'ASGTJVCDSR')
         self.list.create_list_items(list_item)
         self.assertFalse(self.list.del_item('AWDBFTHICG'))
 
