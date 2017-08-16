@@ -211,19 +211,20 @@ def add_item(list_id):
 
     if title and quantity and price and status:
         item_id = app_class.random_id()
-        new_item = ListItems(title, quantity, item_id, price, status)
+        new_item = ListItems(title, quantity, price, status, item_id)
         if status == 'Done':
             list1.get_done_status(new_item)
             flash('You have completed one item')
         else:
             list1.get_undone_status(new_item)
-        if list1.check_valid_items(title):
-            if list1.create_list_items(new_item):
-                flash('Item successfully created')
-                return redirect(url_for('items', list_id=list1.list_id))
-            flash("Item already exists. Try again")
-        flash('Invalid item. Only numbers and letters accepted')
+        # if list1.check_valid_items(title):
+        if list1.create_list_items(new_item):
+            flash('Item successfully created')
+            return redirect(url_for('items', list_id=list1.list_id))
+        flash("Item already exists. Try again")
         return render_template('items.html', user=user, list1=list1)
+        # flash('Invalid item. Only numbers and letters accepted')
+        # return render_template('items.html', user=user, list1=list1)
 
     else:
         flash('You did not input a title or description. Try Again')
@@ -256,19 +257,18 @@ def edit_item(list_id, item_id):
 
         if title and quantity and price and status:
             item_id = app_class.random_id()
-            new_item = ListItems(title, quantity, item_id, price, status)
+            new_item = ListItems(title, quantity, price, status, item_id)
             if status == 'Done':
                 list1.get_done_status(new_item)
                 flash('You have completed one item')
             else:
                 list1.get_undone_status(new_item)
-            if list1.check_valid_items(item):
-                if list1.edit_list_item(title, quantity, item_id, price, status):
-                    flash('Item successfully edited')
-                    return redirect(url_for('items', list_id=list_id))
-                flash('Item not edited. Try again')
-            flash('Invalid item. Only numbers and letters accepted')
-            return redirect(url_for('edit_item', list_id=list_id, item_id=item_id))
+
+            if list1.edit_list_item(title, quantity, price, status, item_id):
+                flash('Item successfully edited')
+                return redirect(url_for('items', list_id=list_id))
+            flash('Item not edited. Try again')
+            return render_template('edit_items.html', list_id=list_id, item_id=item_id)
 
         else:
             flash('You did not input a title or description. Try Again')
