@@ -105,14 +105,14 @@
 
                 <!--table body-->
                 <tbody>
-                {% for key, list1 in lists.items() %}
+                {% for key, shop_list in lists.items() %}
                     <tr>
                         <td>
-                            <a href="{{ url_for('items', list_id = list1.list_id) }}">{{ list1.title }}</a>
+                            <a href="{{ url_for('items', list_id = shop_list.list_id) }}">{{ shop_list.title }}</a>
                         </td>
-                        <td>{{ list1.description }}</td>
-                        <td class="text-right"><a href="{{ url_for('edit_list',list_id = list1.list_id) }}">EDIT</a></td>
-                        <td class="text-right"><a href="{{ url_for('delete_list',list_id = list1.list_id) }}">DELETE</a>
+                        <td>{{ shop_list.description }}</td>
+                        <td class="text-right"><a href="{{ url_for('edit_list',list_id = shop_list.list_id) }}">EDIT</a></td>
+                        <td class="text-right"><a href="{{ url_for('delete_list',list_id = shop_list.list_id) }}">DELETE</a>
                         </td>
                     </tr>
                 {% endfor %}

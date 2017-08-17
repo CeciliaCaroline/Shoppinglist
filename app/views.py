@@ -124,8 +124,8 @@ def edit_list(list_id):
     if not user:
         return redirect(url_for('login'))
 
-    list = user.get_list(list_id)
-    if not list:
+    shop_list = user.get_list(list_id)
+    if not shop_list:
         flash('list does not exist')
         return redirect(url_for('shopping_list'))
 
@@ -140,13 +140,13 @@ def edit_list(list_id):
                     return redirect(url_for('shopping_list'))
                 flash('List not edited.')
             flash('Invalid title. Only numbers and letters accepted')
-            return render_template('edit_list.html', user=user, list=list)
+            return render_template('edit_list.html', user=user, shop_list=shop_list)
 
         else:
             flash(" Please provide list title or description")
-            return render_template('edit_list.html', user=user, list=list)
+            return render_template('edit_list.html', user=user, shop_list=shop_list)
 
-    return render_template('edit_list.html', user=user, list=list)
+    return render_template('edit_list.html', user=user, shop_list=shop_list)
 
 
 @app.route('/delete/list/<list_id>', methods=['GET', 'POST'])
@@ -159,16 +159,16 @@ def delete_list(list_id):
     user = app_class.get_user(session['email'])
     if not user:
         return redirect(url_for('login'))
-    list1 = user.get_list(list_id)
-    if not list1:
+    shop_list = user.get_list(list_id)
+    if not shop_list:
         return redirect(url_for('shopping_list'))
 
     if request.method == 'POST':
         if user.del_list(list_id):
             flash("You have successfully deleted a list")
-            return redirect(url_for('delete_list', list_id=list1.list_id))
+            return redirect(url_for('delete_list', list_id=shop_list.list_id))
         error = "Could not delete the Bucket"
-    return render_template('delete_list.html', error=error, list=list1, user=user)
+    return render_template('delete_list.html', error=error, shop_list=shop_list, user=user)
 
 
 @app.route('/view/list/item/<list_id>', methods=['POST', 'GET'])
@@ -183,11 +183,11 @@ def items(list_id):
     if not user:
         return redirect(url_for('login'))
 
-    list1 = user.get_list(list_id)
-    if not list1:
+    shop_list = user.get_list(list_id)
+    if not shop_list:
         return redirect(url_for('shopping_list'))
 
-    return render_template('items.html', user=user, list1=list1)
+    return render_template('items.html', user=user, shop_list=shop_list)
 
 
 @app.route('/add/list/item/<list_id>', methods=['POST'])
@@ -200,7 +200,7 @@ def add_item(list_id):
     if not user:
         return redirect(url_for('login'))
 
-    list1 = user.get_list(list_id)
+    shop_list = user.get_list(list_id)
     title = request.form['title']
     quantity = request.form['quantity']
     price = request.form['price']
@@ -209,21 +209,16 @@ def add_item(list_id):
     if title and quantity and price and status:
         item_id = app_class.random_id()
         new_item = ListItems(title, quantity, price, status, item_id)
-        if status == 'Done':
-            list1.get_done_status(new_item)
-            flash('You have completed one item')
-        else:
-            list1.get_undone_status(new_item)
 
-        if list1.create_list_items(new_item):
+        if shop_list.create_list_items(new_item):
             flash('Item successfully created')
-            return redirect(url_for('items', list_id=list1.list_id))
+            return redirect(url_for('items', list_id=shop_list.list_id))
         flash("Item already exists. Try again")
-        return render_template('items.html', user=user, list1=list1)
+        return render_template('items.html', user=user, shop_list=shop_list)
 
     else:
         flash('You did not input a title or description. Try Again')
-        return render_template('items.html', user=user, list1=list1)
+        return render_template('items.html', user=user, shop_list=shop_list)
 
 
 @app.route('/edit/list/item/<list_id>/<item_id>', methods=['GET', 'POST'])
@@ -275,19 +270,19 @@ def delete_item(list_id, item_id):
     if not user:
         return redirect(url_for('login'))
 
-    list1 = user.get_list(list_id)
-    item = list1.get_item(item_id)
-    if not list1 and not item:
+    shop_list = user.get_list(list_id)
+    item = shop_list.get_item(item_id)
+    if not shop_list and not item:
         flash('Item does not exist')
         return redirect(url_for('items', list_id=list_id))
 
     if request.method == 'POST':
-        if list1.del_item(item_id):
+        if shop_list.del_item(item_id):
             flash('Item has been deleted')
-            return redirect(url_for('items', list_id=list1.list_id))
+            return redirect(url_for('items', list_id=shop_list.list_id))
 
         error = 'Item was not deleted'
-    return render_template('delete_items.html', error=error, user=user, list1=list1, item=item)
+    return render_template('delete_items.html', error=error, user=user, shop_list=shop_list, item=item)
 
 
 @app.route('/logout')
