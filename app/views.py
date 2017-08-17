@@ -256,11 +256,12 @@ def edit_item(list_id, item_id):
                 flash('Item successfully edited')
                 return redirect(url_for('items', list_id=list_id))
             flash('Item not edited. Try again')
-            # Added user in this line below
+
             return render_template('edit_items.html', user=user, shop_list=shop_list, item=item)
         else:
             flash('You did not input a title or description. Try Again')
     return render_template('edit_items.html', user=user, shop_list=shop_list, item=item)
+
 
 @app.route('/delete/list/item/<list_id>/<item_id>', methods=['GET', 'POST'])
 def delete_item(list_id, item_id):
