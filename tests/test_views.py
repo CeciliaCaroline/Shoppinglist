@@ -15,7 +15,8 @@ class TestViews(unittest.TestCase):
         self.app = app.test_client()
         app.secret_key = "sdgsdgsjbdvskdxljvs"
 
-        self.login = self.app.post('/login', data=dict(email='c@gmail.com', password='12345'),
+        self.password = '12345'
+        self.login = self.app.post('/login', data=dict(email='c@gmail.com', password=self.password),
                                    follow_redirects=True)
 
     # Ensure signup page request successful
@@ -30,13 +31,13 @@ class TestViews(unittest.TestCase):
 
     # Ensure signup page behaves correctly given correct credentials
     def test_correct_signup(self):
-        result = self.app.post('/signup', data=dict(username='Cecilia', email='c@gmail.com', password='12345'),
+        result = self.app.post('/signup', data=dict(username='Cecilia', email='c@gmail.com', password=self.password),
                                follow_redirects=True)
         self.assertIn(b'You have been registered', result.data, msg='Incorrect signup')
 
     # Ensure signup page behaves correctly given incorrect credentials
     def test_incorrect_signup(self):
-        result = self.app.post('/signup', data=dict(username='Cecilia', email='', password='12345'),
+        result = self.app.post('/signup', data=dict(username='Cecilia', email='', password=''),
                                follow_redirects=True)
         self.assertIn(b'Sign me Up!', result.data)
 
@@ -52,20 +53,18 @@ class TestViews(unittest.TestCase):
 
     # Ensure login page behaves correctly given correct credentials
     def test_correct_login(self):
-        result = self.app.post('/login', data=dict(email='c@gmail.com', password='12345'),
+        result = self.app.post('/login', data=dict(email='c@gmail.com', password=self.password),
                                follow_redirects=True)
         self.assertIn(b'Log In', result.data, msg='Incorrect login')
 
     # Ensure login page behaves correctly given incorrect credentials
     def test_incorrect_login(self):
-        result = self.app.post('/login', data=dict(email='cecilia@gmail.com', password='12345'),
+        result = self.app.post('/login', data=dict(email='cecilia@gmail.com', password=self.password),
                                follow_redirects=True)
         self.assertIn(b'Log In', result.data, msg='correct login')
 
     # Ensure logout page behaves correctly given correct credentials
     def test_logout(self):
-        self.app.post('/login', data=dict(email='cecilia@gmail.com', password='12345'),
-                      follow_redirects=True)
         result = self.app.get('/logout', follow_redirects=True)
         self.assertIn(b'You have been logged out', result.data, msg='correct login')
 
