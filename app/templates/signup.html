@@ -24,6 +24,15 @@
 
         <!-- media body-->
         <div class=" container media-body form-background card mx-5 mt-5 col">
+              <!--error -->
+            {% if error %}
+                <div class=" alert alert-danger alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                    <p class="error">{{ error }}</p>
+                </div>
+            {% endif %}
+            <!--end of error-->
+
             <form action="{{ url_for('signup') }}" method="post">
                 <h2 class="text-capitalize card-title mt-5">New to Shoppinglist. Register</h2>
                 <div class="row">
@@ -60,14 +69,6 @@
                     </div><!--column-->
                 </div><!--row-->
             </form>
-            <!--error -->
-            <div class="d-flex justify-content-center">
-                {% if error %}
-                <p class="error">{{ error }}</p>
-                {% endif %}
-            </div>
-            <!--end of error-->
-
         </div><!--container-->
     </div><!--row-->
 
