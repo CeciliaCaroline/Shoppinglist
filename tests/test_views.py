@@ -80,7 +80,7 @@ class TestViews(unittest.TestCase):
     def test_home_page_loads(self):
         result = self.app.get('/home', content_type='html/text')
         self.assertTrue(b'Click on My Lists to start creating lists', result.data)
-
+        
 
 if __name__ == '__main__':
     unittest.main()
