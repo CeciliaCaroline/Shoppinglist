@@ -10,6 +10,7 @@ flask-paginate==0.5.0
 Flask-WTF==0.14.2
 ## !! Could not determine repository location
 Greeting-App==0.1
+gunicorn==19.7.1
 httplib2==0.10.3
 idna==2.5
 itsdangerous==0.24
