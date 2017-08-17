@@ -3,6 +3,12 @@ import re
 
 class List:
     def __init__(self, title, description, list_id):
+        """"
+        method to initialize list attributes
+        :param title
+        :param description
+        :param list_id
+        """
         self.title = title
         self.description = description
         self.list_id = list_id
@@ -13,7 +19,8 @@ class List:
 
     def create_list_items(self, new_item):
         """"
-        method to check if item id already exists, if not, create a new list item
+        method to check if item id already exists
+        if not, create a new list item
         :param new_item
         """
         if new_item.item_id in self.list_items.keys():
@@ -28,7 +35,7 @@ class List:
 
     def edit_list_item(self, title, quantity, price, status, item_id):
         """"
-        method to edit an existing item
+        method to edit list item
         :param item_id
         :param title
         :param quantity
@@ -53,7 +60,7 @@ class List:
 
     def del_item(self, item_id):
         """"
-        method to delete an existing item
+        method to delete item
         :param item_id
         """
         if item_id in self.list_items.keys():
