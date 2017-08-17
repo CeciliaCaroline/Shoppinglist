@@ -1,0 +1,39 @@
+
+.auth-background {
+    background: url("../images/image1.svg") center center no-repeat;
+
+}
+
+.form-background {
+
+    background: rgba(255, 255, 255, .3)
+
+}
+
+.media {
+
+    background: transparent;
+
+}
+
+.navbar {
+
+    background: rebeccapurple;
+}
+
+
+
+.new_list_background {
+
+    background: rgba(168, 143, 255, .2);
+    margin-top: 100px;
+}
+
+.items{
+
+    margin-top: 100px;
+}
+
+
+
+
