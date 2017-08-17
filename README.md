@@ -1,6 +1,5 @@
 # Shopping List Application
 [![Coverage Status](https://coveralls.io/repos/github/CeciliaCaroline/Shoppinglist/badge.svg?branch=master)](https://coveralls.io/github/CeciliaCaroline/Shoppinglist?branch=master)
-[![Coverage Status](https://coveralls.io/repos/github/CeciliaCaroline/Shoppinglist/badge.svg)](https://coveralls.io/github/CeciliaCaroline/Shoppinglist)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/06515178c94249f092860523e08360c1)](https://www.codacy.com/app/CeciliaCaroline/Shoppinglist?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=CeciliaCaroline/Shoppinglist&amp;utm_campaign=Badge_Grade)
 [![Build Status](https://travis-ci.org/CeciliaCaroline/Shoppinglist.svg?branch=master)](https://travis-ci.org/CeciliaCaroline/Shoppinglist)
 
