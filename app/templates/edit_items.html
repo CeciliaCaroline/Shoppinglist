@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block title %}Edit Item{% endblock %}
+{% block content %}
+    <body>
+
+    <!-- header navigation bar -->
+    <nav class="navbar navbar-inverse fixed-top bg-faded navbar-toggleable-sm ">
+        <div class="container">
+            <a href="{{ url_for('home') }}" class="navbar-brand m-o align-content-end mr-auto">
+                SHOPPING LIST
+            </a>
+            <div class="navbar-nav ">
+                {% if user %}
+                <a class="nav-item nav-link active" href="{{ url_for('home') }}">{{ user.username }}</a>
+                {% endif  %}
+                <a class="nav-item nav-link " href="{{ url_for('shopping_list') }}">My Lists</a>
+                <a class="nav-item nav-link" href="{{ url_for('logout') }}">Log Out</a>
+            </div><!-- navbar-->
+        </div><!-- container -->
+    </nav>
+    <!--end fo navigation bar-->
+
+    <!-- Editing an item -->
+    <div class="container">
+         <!--flash message-->
+            {% for message in get_flashed_messages() %}
+                <div class="alert alert-success alert-dismissable offset-2">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                    {{ message }}
+                </div><!--end of flash message-->
+            {% endfor %}
+        <div class="row">
+            <div class="container new_list_background card col-6">
+                <form action="{{ url_for('edit_item', list_id =shop_list.list_id, item_id=item.item_id) }}" method="post">
+                    <h2 class="text-capitalize card-title mt-1">Edit List Item</h2>
+                    <div class="row">
+                        <div class="col">
+
+                            <!-- List item content-->
+                            <!-- title-->
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="item">Item</label>
+                                <div class="col">
+                                    <input type="text" class="form-control" id="item" name="title"
+                                           value="{{ item.title }}" required>
+                                </div>
+                            </div>
+
+                            <!--quantity-->
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="quantity">Quantity</label>
+                                <div class="col">
+                                    <input type="text" class="form-control" id="quantity" name="quantity"
+                                           value="{{ item.quantity }}" required>
+                                </div>
+                            </div>
+
+                            <!--price-->
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="price">Price</label>
+                                <div class="col">
+                                    <input type="text" class="form-control" id="price" name="price"
+                                           value="{{ item.price }}" required>
+                                </div>
+                            </div>
+
+                            <!--status-->
+                            <div class="form-group">
+                                <label class="control-label col-sm-6" for="sel1">Select status:</label>
+                                <div class="col">
+                                    <select class="form-control" id="sel1" name="status">
+                                        <option>Not Done</option>
+                                        <option>Done</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!--save button-->
+                            <div class="form-group">
+                                <div>
+                                    <button class="btn btn-info " type="submit">Save Item</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- contents of footer navigation bar -->
+            <footer class="navbar fixed-bottom navbar-inverse navbar-toggleable-sm ">
+                <div class="container">
+                    <span class="navbar-text ml-auto">&copy; Shopping List Inc All rights reserved</span>
+                </div>
+
+            </footer>
+        </div>
+    </div>
+
+    </body>
+{% endblock %}

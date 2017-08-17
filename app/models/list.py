@@ -18,26 +18,28 @@ class List:
         """
         if new_item.item_id in self.list_items.keys():
             return False
-        elif new_item.item in self.new_list_items:
+        elif new_item.title in self.new_list_items:
             return False
 
         else:
             self.list_items[new_item.item_id] = new_item
-            self.new_list_items[new_item.item_id] = new_item.item
+            self.new_list_items[new_item.item_id] = new_item.title
             return True
 
-    def edit_bucket_item(self, item, description, item_id, status):
+    def edit_list_item(self, title, quantity, price, status, item_id):
         """"
         method to edit an existing item
         :param item_id
-        :param item
-        :param description
+        :param title
+        :param quantity
+        :param price
         :param status
         """
         if item_id in self.list_items.keys():
             edit_list_item = self.list_items[item_id]
-            edit_list_item.item = item
-            edit_list_item.description = description
+            edit_list_item.title = title
+            edit_list_item.quantity = quantity
+            edit_list_item.price = price
             edit_list_item.status = status
             return True
         return False
@@ -58,8 +60,8 @@ class List:
             del self.list_items[item_id]
             del self.new_list_items[item_id]
             return True
-        return None
+        return False
 
-    def check_valid_items(self, item):
-        if re.match("^[a-zA-Z0-9\s]*$", item):
+    def check_valid_items(self, title):
+        if re.match("^[a-zA-Z0-9\s]*$", title):
             return True

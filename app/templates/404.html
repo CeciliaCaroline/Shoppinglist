@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Edit Item{% endblock %}
+{% block content %}
+    <body>
+
+    <!-- header navigation bar -->
+    <nav class="navbar navbar-inverse fixed-top bg-faded navbar-toggleable-sm ">
+        <div class="container">
+            <a href="{{ url_for('home') }}" class="navbar-brand m-o align-content-end mr-auto">
+                SHOPPING LIST
+            </a>
+            <div class="navbar-nav ">
+                <a class="nav-item nav-link " href="{{ url_for('shopping_list') }}">My Lists</a>
+                <a class="nav-item nav-link" href="{{ url_for('logout') }}">Log Out</a>
+            </div><!-- navbar-->
+        </div><!-- container -->
+    </nav>
+    <!--end fo navigation bar-->
+
+    <!-- 404 page not found text-->
+        <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="text-center">
+                    <p class="display-4">404</p>
+                    <h3>Sorry, page not found.</h3>
+                    <p>If you entered a web address, please check if it is correct. <a href="{{ url_for('home') }}">Go
+                        back to Home</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- contents of footer navigation bar -->
+    <footer class="navbar fixed-bottom navbar-inverse navbar-toggleable-sm ">
+        <div class="container">
+            <span class="navbar-text ml-auto">&copy; ShoppingList Inc All rights reserved</span>
+        </div>
+    </footer><!-- footer-->
+    </body>
+{% endblock %}
