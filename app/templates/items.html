@@ -93,6 +93,7 @@
                                         <label class="control-label col-sm-6" for="status">Select status:</label>
                                         <div class="col">
                                             <select class="form-control" id="status" name="status" required>
+                                                <option></option>
                                                 <option>Not Done</option>
                                                 <option>Done</option>
                                             </select>
@@ -128,19 +129,42 @@
 
                 <tbody>
                 {% for key, item in shop_list.list_items.items() %}
-                    <tr>
-                        <td>{{ item.title }}</td>
-                        <td>{{ item.quantity }}</td>
-                        <td>{{ item.price }}</td>
-                        <td>{{ item.status }}</td>
-                        <td class="text-right"><a
-                                href="{{ url_for('edit_item', list_id = shop_list.list_id, item_id = item.item_id) }}"
-                                class=" btn btn-link">EDIT</a></td>
-                        <td class="text-right"><a
-                                href="{{ url_for('delete_item',list_id = shop_list.list_id, item_id = item.item_id) }}"
-                                class="btn btn-link">DELETE</a>
-                        </td>
-                    </tr>
+                    {% if item.status == 'Done' %}
+                        <tr>
+
+                            <td>
+                                <del>{{ item.title }}</del>
+                            </td>
+                            <td>
+                                <del>{{ item.quantity }}</del>
+                            </td>
+                            <td>
+                                <del>{{ item.price }}</del>
+                            </td>
+                            <td>{{ item.status }}</td>
+                            <td class="text-right"><a
+                                    href="{{ url_for('edit_item', list_id = shop_list.list_id, item_id = item.item_id) }}"
+                                    class=" btn btn-link">EDIT</a></td>
+                            <td class="text-right"><a
+                                    href="{{ url_for('delete_item',list_id = shop_list.list_id, item_id = item.item_id) }}"
+                                    class="btn btn-link">DELETE</a>
+                            </td>
+
+                            {% else %}
+                            <td>{{ item.title }}</td>
+                            <td>{{ item.quantity }}</td>
+                            <td>{{ item.price }}</td>
+                            <td>{{ item.status }}</td>
+                            <td class="text-right"><a
+                                    href="{{ url_for('edit_item', list_id = shop_list.list_id, item_id = item.item_id) }}"
+                                    class=" btn btn-link">EDIT</a></td>
+                            <td class="text-right"><a
+                                    href="{{ url_for('delete_item',list_id = shop_list.list_id, item_id = item.item_id) }}"
+                                    class="btn btn-link">DELETE</a>
+                            </td>
+
+                        </tr>
+                    {% endif %}
                 {% endfor %}
                 </tbody>
             </table>
