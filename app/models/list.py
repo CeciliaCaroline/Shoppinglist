@@ -65,13 +65,3 @@ class List:
     def check_valid_items(self, title):
         if re.match("^[a-zA-Z0-9\s]*$", title):
             return True
-
-    def get_done_status(self, new_item):
-        new_item.status == 'Done'
-        self.done.append(new_item)
-
-        # return True
-
-    def get_undone_status(self, new_item):
-        new_item.status == 'Not Done'
-        self.undone.append(new_item)
