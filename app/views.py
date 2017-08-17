@@ -88,12 +88,6 @@ def add_list():
     Route to enable the user to create/add lists
     """
 
-    # if request.form['title'] and request.form['description']:
-    #     title = request.form['title']
-    #     description = request.form['description']
-    #     return title, description
-    # return "no input"
-
     user = app_class.get_user(session['email'])
     if not user:
         flash('You need to login first')
@@ -105,7 +99,7 @@ def add_list():
     if title and description:
         list_id = app_class.random_id()
         list1 = List(title, description, list_id)
-        print(list_id)
+
         if user.check_valid_list(title):
             if user.create_list(list1):
                 flash('List successfully created')
@@ -242,11 +236,12 @@ def edit_item(list_id, item_id):
     """
     user = app_class.get_user(session['email'])
     if not user:
+        flash('You need to login first')
         return redirect(url_for('login'))
 
-    list1 = user.get_list(list_id)
-    item = list1.get_item(item_id)
-    if not list1 and not item:
+    shop_list = user.get_list(list_id)
+    item = shop_list.get_item(item_id)
+    if not shop_list and not item:
         flash('Item does not exist')
         return redirect(url_for('items', list_id=list_id))
 
@@ -257,24 +252,15 @@ def edit_item(list_id, item_id):
         status = request.form['status']
 
         if title and quantity and price and status:
-            item_id = app_class.random_id()
-            new_item = ListItems(title, quantity, price, status, item_id)
-            if status == 'Done':
-                list1.get_done_status(new_item)
-                flash('You have completed one item')
-            else:
-                list1.get_undone_status(new_item)
-
-            if list1.edit_list_item(title, quantity, price, status, item_id):
+            if shop_list.edit_list_item(title, quantity, price, status, item_id):
                 flash('Item successfully edited')
                 return redirect(url_for('items', list_id=list_id))
             flash('Item not edited. Try again')
-            return render_template('edit_items.html', list_id=list_id, item_id=item_id)
-
+            # Added user in this line below
+            return render_template('edit_items.html', user=user, shop_list=shop_list, item=item)
         else:
             flash('You did not input a title or description. Try Again')
-    return render_template('edit_items.html', user=user, list1=list1, item=item)
-
+    return render_template('edit_items.html', user=user, shop_list=shop_list, item=item)
 
 @app.route('/delete/list/item/<list_id>/<item_id>', methods=['GET', 'POST'])
 def delete_item(list_id, item_id):
