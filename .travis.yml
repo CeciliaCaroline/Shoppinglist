@@ -1,0 +1,23 @@
+language: python
+
+python:
+
+ - 3.6.1
+
+cache: pip
+
+
+install:
+  - pip install coveralls
+  - pip install coverage
+  - pip install flask
+
+env:
+  CODECLIMATE_REPO_TOKEN: aee771479fd4bee687056084b37a19c5c6fbb02d21f6d8c0d1b89db7546ffb34
+
+
+script:
+  - nosetests --with-coverage --cover-package=app
+
+after_success:
+  - coveralls
