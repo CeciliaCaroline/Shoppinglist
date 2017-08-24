@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}Log In{% endblock %}
+{% block content %}
+<body class="auth-background">
+<!-- Log in form -->
+<div class="container">
+    <!-- login form -->
+    <form  action="{{ url_for('login') }}" method="post">
+        <div class="row">
+            <div class="container form-background card mt-5 col-6">
+                <h2 class="text-capitalize card-title">Log In</h2>
+                <div class="row">
+                    <div class="col">
+
+                        <!-- Email input-->
+                        <div class="form-group">
+                            <label class="control-label align-content-around" for="email">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div><!--form group-->
+
+                        <!-- Password input-->
+                        <div class="form-group">
+                            <label class="control-label align-content-around" for="password">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div><!--form group-->
+
+                        <!-- Log In button-->
+                        <div class="form-group text-center">
+                            <button class="btn btn-info btn-block" type="submit">Log In</button>
+                            <a href="{{url_for('signup')}}">Back To Sign Up!</a>
+                        </div><!-- form group-->
+                    </div><!-- column-->
+                </div><!-- row-->
+            </div><!-- container-->
+        </div><!-- row-->
+    </form>
+
+
+    <!--flash message-->
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-success alert-dismissable offset-3 col-6 text-center">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+        {{ message }}
+    </div><!--end of flash message-->
+    {% endfor %}
+
+    <!--error -->
+    {% if error %}
+    <div class="text-center alert alert-danger alert-dismissable offset-3 col-6">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+        <p class="error"><strong>Oops!</strong>{{ error }}</p>
+    </div>
+    {% endif %}
+    <!--end of error-->
+
+</div>
+
+
+<script src="../static/js/jquery.slim.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/scripts.js"></script>
+</body>
+{% endblock %}}

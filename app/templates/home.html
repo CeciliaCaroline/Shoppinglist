@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+    <body>
+
+    <!-- header navigation bar -->
+    <nav class="navbar navbar-inverse fixed-top bg-faded navbar-toggleable-sm ">
+        <div class="container">
+            <a href="{{ url_for('home') }}" class="navbar-brand m-o align-content-end mr-auto">
+                BUCKET LIST
+            </a>
+            <div class="navbar-nav ">
+                <a class="nav-item nav-link active" href="{{ url_for('home') }}">{{ user.username }}</a>
+                <a class="nav-item nav-link " href="{{ url_for('shopping_list') }}">My Lists</a>
+                <a class="nav-item nav-link" href="{{ url_for('logout') }}">Log Out</a>
+            </div><!-- navbar-->
+        </div><!-- container -->
+    </nav>
+    <!--end fo navigation bar-->
+
+    <div class="container">
+        <div class="row">
+            <div class="  col  ">
+                <div class="card  items d-flex align-content-end text-center">
+                    <div>
+                        <h2 class="text-welcome">Hi {{ user.username }}</h2>
+                    </div>
+                    <section class="mt-5">
+                        <h5>You have {{ lists }} Lists</h5>
+                        <p>Click on <em>My Lists</em> to create new lists</p>
+
+                    </section>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+    <!--flash message-->
+
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-success alert-dismissable offset-4 col-4">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+            <strong>Success!</strong> {{ message }}
+        </div><!--end of flash message-->
+    {% endfor %}
+
+    <!--error -->
+    <div class="d-flex justify-content-center">
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+    </div>
+    <!--end of error-->
+
+    <!-- contents of footer navigation bar -->
+    <footer class="navbar fixed-bottom navbar-inverse navbar-toggleable-sm ">
+        <div class="container">
+            <span class="navbar-text ml-auto">&copy; BucketList Inc All rights reserved</span>
+        </div>
+    </footer><!-- footer-->
+    </body>
+{% endblock %}
+
